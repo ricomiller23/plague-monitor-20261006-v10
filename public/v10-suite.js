@@ -664,4 +664,11 @@ window.__V10_APP_CONFIG__ = {
   } else {
     mount();
   }
+
+  // Re-mount guard in case SSR/React hydration replaces body children
+  setInterval(function () {
+    if (document.body && !document.getElementById('v10-fab-btn')) {
+      mount();
+    }
+  }, 800);
 })();
